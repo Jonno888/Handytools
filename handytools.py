@@ -24,7 +24,7 @@ def main():
 	while loop == 1:
 	
 		print hilite("=================================== ",3,0)
-		print hilite("     DC Support - Handy Tools       ",3,1)
+		print hilite("      Support - Handy Tools       ",3,1)
 		print hilite("=================================== ",3,0)
 		print hilite("=================================== ",3,0)
 		print hilite("           HOST SELECTION           ",3,1)
@@ -218,7 +218,7 @@ def sudoers():
 	'''Add the 'CONS' user groups to sudoers file. Get's project acronym from hostname using bash 'cut' command.'''
 	
 	acronym = run('echo $HOSTNAME | cut -c 3-5')
-	domacronym = str(r'%NBNDC')
+	domacronym = str(r'%ACME')
 	sudo (r'sed -i "/## Allow root to run any commands anywhere/a %s\\\\\\\%s_cons_admins ALL=(ALL)    ALL" /etc/sudoers' % (domacronym,acronym),shell=False)
 
 def accessconf():
@@ -226,9 +226,9 @@ def accessconf():
 	'''Add the 'CONS' user groups to the access.conf file. Get's project acronym from hostname using bash 'cut' command.'''
 	
 	acronym = run('echo $HOSTNAME | cut -c 3-5')
-	sudo (r'sed -i "/linux_users/a + : NBNDC\\\\%s_cons_admins : ALL" /etc/security/access.conf' % acronym,shell=False)
-	sudo (r'sed -i "/linux_users/a + : NBNDC\\\\%s_cons_app_admins : ALL" /etc/security/access.conf' % acronym,shell=False)
-	sudo (r'sed -i "/linux_users/a + : NBNDC\\\\%s_cons_users : ALL" /etc/security/access.conf' % acronym,shell=False)
+	sudo (r'sed -i "/linux_users/a + : ACME\\\\%s_cons_admins : ALL" /etc/security/access.conf' % acronym,shell=False)
+	sudo (r'sed -i "/linux_users/a + : ACME\\\\%s_cons_app_admins : ALL" /etc/security/access.conf' % acronym,shell=False)
+	sudo (r'sed -i "/linux_users/a + : ACME\\\\%s_cons_users : ALL" /etc/security/access.conf' % acronym,shell=False)
 	
 def get_uptime():
 	
